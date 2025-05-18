@@ -54,7 +54,7 @@ with col1:
     """)
 
 with col2:
-    st.image("https://pixabay.com/get/g368639ea753ac71df733611a5f39547c0c27aa3416319d097e5af911f1e28b9331f0ce5448edb3b03d5cac43053b807fb6c46dfc0179c5ea9692378e2a2fa4db_1280.jpg", use_column_width=True)
+    st.image("https://drive.google.com/file/d/1W2hFLd1SdKiA6OilL63RlGC_XY9HIZkv/view?usp=sharing", use_column_width=True)
     
     st.markdown("""
     ## NidoData
