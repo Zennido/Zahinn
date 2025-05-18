@@ -54,7 +54,7 @@ with col1:
     """)
 
 with col2:
-    st.image("https://www.imghippo.com/i/wOPs3437doc.png", use_column_width=True)
+    st.image("https://i.imghippo.com/files/wOPs3437doc.png", use_column_width=True)
     
     st.markdown("""
     ## NidoData
