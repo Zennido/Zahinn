@@ -31,7 +31,7 @@ if "transformation_history" not in st.session_state:
 # App header
 col1, col2 = st.columns([1, 5])
 with col1:
-    st.image("https://pixabay.com/get/gd2d81834d2cbce8ece6077511ea3f2ae01013407929c976ec72fd79af9627d61627832bb28a1e5877d5ed03b56150b3ba06f59ae589ec205c32223f5d5ad4525_1280.jpg", width=100)
+    st.image("https://i.imghippo.com/files/eNxs7756pp.png", width=100)
 with col2:
     st.title("Zahinn - Business Intelligence Platform")
     st.subheader("by NidoData")
