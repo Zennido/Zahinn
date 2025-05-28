@@ -97,8 +97,7 @@ with col1:
         model_options = [
             "Linear Regression",
             "Decision Tree Regressor",
-            "Random Forest Regressor",
-            "XGBoost Regressor"
+            "Random Forest Regressor"
         ]
     else:  # Classification
         model_options = [
@@ -156,7 +155,6 @@ with col1:
         - **Linear Regression**: Simple, interpretable model for linear relationships
         - **Decision Tree**: Handles non-linear relationships, easy to understand
         - **Random Forest**: Ensemble of trees, good accuracy but less interpretable
-        - **XGBoost**: Advanced boosting algorithm, often highest accuracy
         """)
     else:
         st.markdown("""
@@ -242,8 +240,6 @@ with col2:
                     model = DecisionTreeRegressor(random_state=int(random_state))
                 elif selected_model == "Random Forest Regressor":
                     model = RandomForestRegressor(n_estimators=100, random_state=int(random_state))
-                elif selected_model == "XGBoost Regressor":
-                    model = xgb.XGBRegressor(random_state=int(random_state))
                 elif selected_model == "Logistic Regression":
                     model = LogisticRegression(random_state=int(random_state), max_iter=1000)
                 elif selected_model == "Decision Tree Classifier":
@@ -253,8 +249,12 @@ with col2:
                 elif selected_model == "XGBoost Classifier":
                     model = xgb.XGBClassifier(random_state=int(random_state))
                 
-                # Train the model
+                # Ensure feature names are strings (XGBoost requirement)
+                X_train.columns = X_train.columns.astype(str)
+                X_test.columns = X_test.columns.astype(str)
                 model.fit(X_train, y_train)
+
+
                 
                 # Store the model in session state
                 st.session_state.ml_model = model
@@ -323,10 +323,11 @@ with col2:
                 if hasattr(model, 'feature_importances_'):
                     importances = model.feature_importances_
                     feature_importance = pd.DataFrame({
-                        'Feature': X_processed.columns,
-                        'Importance': importances
+                        'Feature': list(X_processed.columns),
+                        'Importance': importances.ravel()
                     }).sort_values('Importance', ascending=False)
                     st.session_state.ml_feature_importance = feature_importance
+
                 elif hasattr(model, 'coef_'):
                     # For linear models
                     coefficients = model.coef_
